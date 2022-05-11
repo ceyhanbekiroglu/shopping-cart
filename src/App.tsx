@@ -8,6 +8,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import Badge from '@material-ui/core/Badge'
 
 import { Wrapper } from './App.styles'
+import LinearProgress from '@material-ui/core/LinearProgress'
 
 export type CartItemType = {
 	id: number
@@ -27,6 +28,15 @@ function App() {
 		'products',
 		getProducts
 	)
+	const getTotalItems = () => null
+	const handleAddToCart = (clickedItem: CartItemType) => null
+	const handleRemoveFromCart = () => null
+
+	if (isLoading) return <LinearProgress color='secondary' />
+	if (error) return <div>Something went wrong...</div>
+
+	console.log(data)
+
 	return <div className='App'>Start</div>
 }
 
