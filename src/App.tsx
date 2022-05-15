@@ -31,7 +31,9 @@ function App() {
 		'products',
 		getProducts
 	)
-	const getTotalItems = () => null
+	const getTotalItems = (items: CartItemType[]) =>
+		items.reduce((ack: number, item) => ack + item.amount, 0)
+
 	const handleAddToCart = (clickedItem: CartItemType) => null
 	const handleRemoveFromCart = () => null
 
@@ -46,7 +48,9 @@ function App() {
 				Cart goes here
 			</Drawer>
 			<StyledButton onClick={() => setCartOpen(true)}>
-				<Badge badgeContent={getTotalItems()} color='secondary'></Badge>
+				<Badge badgeContent={getTotalItems(cartItems)} color='error'>
+					<AddShoppingCartIcon />
+				</Badge>
 			</StyledButton>
 
 			<Grid container spacing={3}>
