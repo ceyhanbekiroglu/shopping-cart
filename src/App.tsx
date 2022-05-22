@@ -35,7 +35,27 @@ function App() {
 	const getTotalItems = (items: CartItemType[]) =>
 		items.reduce((ack: number, item) => ack + item.amount, 0)
 
-	const handleAddToCart = (clickedItem: CartItemType) => null
+	const handleAddToCart = (clickedItem: CartItemType) => {
+		setCartItems((prev) => {
+			const existingItem = prev.find((item) => item.id === clickedItem.id)
+
+			if (existingItem) {
+				return prev.map(
+					(item) =>
+						item.id === clickedItem.id
+							? { ...item, amount: item.amount + 1 }
+							: item
+					// if (existingItem) {
+					// 	existingItem.amount += 1
+					// 	return prev
+					// }
+					// return [...prev, { ...clickedItem, amount: 1 }]
+				)
+			}
+			return [...prev, { ...clickedItem, amount: 1 }]
+		})
+	}
+
 	const handleRemoveFromCart = () => null
 
 	if (isLoading) return <LinearProgress color='secondary' />
