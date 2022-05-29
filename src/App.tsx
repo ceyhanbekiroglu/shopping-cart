@@ -40,16 +40,10 @@ function App() {
 			const existingItem = prev.find((item) => item.id === clickedItem.id)
 
 			if (existingItem) {
-				return prev.map(
-					(item) =>
-						item.id === clickedItem.id
-							? { ...item, amount: item.amount + 1 }
-							: item
-					// if (existingItem) {
-					// 	existingItem.amount += 1
-					// 	return prev
-					// }
-					// return [...prev, { ...clickedItem, amount: 1 }]
+				return prev.map((item) =>
+					item.id === clickedItem.id
+						? { ...item, amount: item.amount + 1 }
+						: item
 				)
 			}
 			return [...prev, { ...clickedItem, amount: 1 }]
